@@ -37,7 +37,7 @@ No build step, no frameworks, no bundler — clone it and open `index.html`.
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/snippetvault.git
+git clone https://github.com/NEKOZAM-I/snippetvault.git
 cd snippetvault
 ```
 
