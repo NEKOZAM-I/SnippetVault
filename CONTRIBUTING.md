@@ -5,7 +5,7 @@ Thanks for your interest in improving SnippetVault! 🎉
 ## How to Contribute
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/<your-username>/snippetvault.git`
+2. **Clone** your fork: `git clone https://github.com/NEKOZAM-I/snippetvault.git`
 3. **Create a branch** for your change: `git checkout -b feature/my-feature`
 4. **Make your changes** — keep them focused and readable
 5. **Test locally** by serving `index.html` and confirming the app still works end-to-end (create, search, filter, delete)
