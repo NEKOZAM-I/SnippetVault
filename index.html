@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnippetVault — Your Code Snippet Manager</title>
+  <meta name="description" content="Store, organize, and search your code snippets with syntax highlighting." />
+
+  <!-- highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- Supabase client library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <h1>SnippetVault</h1>
+      </div>
+      <button id="newSnippetBtn" class="btn btn-primary">+ New Snippet</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="toolbar">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search by title, code, or tag..."
+      />
+      <select id="languageFilter" class="language-filter">
+        <option value="">All Languages</option>
+      </select>
+    </section>
+
+    <section id="tagFilterBar" class="tag-filter-bar"></section>
+
+    <section id="emptyState" class="empty-state hidden">
+      <p>No snippets yet. Click <strong>“+ New Snippet”</strong> to add your first one.</p>
+    </section>
+
+    <section id="loadingState" class="loading-state">
+      <p>Loading snippets…</p>
+    </section>
+
+    <section id="snippetGrid" class="snippet-grid"></section>
+
+  </main>
+
+  <!-- Add / Edit Snippet Modal -->
+  <div id="snippetModal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">New Snippet</h2>
+        <button id="closeModalBtn" class="btn-icon" aria-label="Close">&times;</button>
+      </div>
+
+      <form id="snippetForm">
+        <label for="titleInput">Title</label>
+        <input type="text" id="titleInput" required placeholder="e.g. Debounce function" />
+
+        <label for="languageInput">Language</label>
+        <select id="languageInput" required>
+          <option value="javascript">JavaScript</option>
+          <option value="typescript">TypeScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="csharp">C#</option>
+          <option value="cpp">C++</option>
+          <option value="go">Go</option>
+          <option value="rust">Rust</option>
+          <option value="php">PHP</option>
+          <option value="ruby">Ruby</option>
+          <option value="sql">SQL</option>
+          <option value="bash">Bash</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="json">JSON</option>
+          <option value="yaml">YAML</option>
+          <option value="plaintext">Plain Text</option>
+        </select>
+
+        <label for="tagsInput">Tags (comma-separated)</label>
+        <input type="text" id="tagsInput" placeholder="e.g. utils, array, regex" />
+
+        <label for="codeInput">Code</label>
+        <textarea id="codeInput" rows="10" required placeholder="Paste your snippet here..."></textarea>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Snippet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
