@@ -1,6 +1,7 @@
 -- SnippetVault database schema for Supabase (PostgreSQL)
 -- Run this in your Supabase project's SQL editor:
 -- Dashboard → SQL Editor → New Query → paste → Run
+-- If you know SQL then make changes yourself.
 
 create extension if not exists "pgcrypto";
 
@@ -16,9 +17,6 @@ create table if not exists snippets (
 -- Enable Row Level Security
 alter table snippets enable row level security;
 
--- Demo/portfolio policy: allow anyone with the anon key to read and write.
--- This is fine for a public portfolio demo. For a real multi-user app,
--- add a `user_id` column and scope these policies to auth.uid() instead.
 create policy "Public can read snippets"
   on snippets for select
   using (true);
